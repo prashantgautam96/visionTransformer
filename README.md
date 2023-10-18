@@ -14,11 +14,27 @@ Transformers for Image Recognition at Scale,” published at ICLR 20211. The ViT
 
 ## Implementation
 
-- An image is split into fixed-size patches.
-- Each patch is linearly embedded.
-- Position embeddings are added to the resulting sequence of vectors.
-- The sequence of vectors is fed to a standard Transformer encoder.
-In order to perform classification, an extra learnable “classification token” is added to the sequence. The resulting sequence is then fed to a standard Transformer decoder.
+**1.** Define the input image size, the number of patches, the patch size, the hidden dimension, the number of heads, the number of blocks, and the output dimension. These are the hyperparameters that will determine the shape and size of the model.
+
+**2.**: Define a function to split an image into patches of equal size. Each patch will be flattened into a vector and concatenated with a learnable embedding vector. The result will be a matrix of shape (n_patches, patch_size * patch_size + hidden_d).
+
+**3.**: Define a function to add positional embeddings to the patch embeddings. This is to provide some information about the spatial location of each patch in the image. The positional embeddings are also learnable vectors of the same shape as the patch embeddings. The result will be a matrix of shape (n_patches, patch_size * patch_size + hidden_d).
+
+**4.**: Define a class for the Multi-Head Self-Attention (MSA) block. This is the core component of the ViT model that allows each patch to attend to every other patch in the image. The MSA block consists of four steps:
+
+- Split the input matrix into n_heads sub-matrices along the hidden dimension axis. This is to allow parallel computation of multiple attention heads.
+- Compute three matrices called queries, keys, and values for each sub-matrix by multiplying them with learnable weight matrices. These are used to measure the similarity and importance of each patch in relation to others.
+- Compute the attention scores for each pair of patches by taking the dot product of queries and keys, and applying a softmax function. This is to normalize the scores and make them sum up to one for each query.
+- Compute the output matrix for each sub-matrix by taking the weighted sum of values according to the attention scores. This is to aggregate the information from all patches based on their relevance.
+- Concatenate the output matrices from all sub-matrices along the hidden dimension axis, and apply a linear transformation with another learnable weight matrix. This is to restore the original shape and dimension of the input matrix.
+
+**5.**: Define a class for the Multi-Layer Perceptron (MLP) block. This is another component of the ViT model that applies two linear transformations with a non-linear activation function (GELU) in between. The MLP block also has a residual connection that adds the input matrix to the output matrix. This is to help with gradient flow and avoid vanishing gradients.
+
+**6.**: Define a class for the Transformer Encoder block. This is a combination of an MSA block and an MLP block, with layer normalization applied before and after each block. The Transformer Encoder block also has residual connections that add the input matrix to the output matrix of each block. This is to further improve gradient flow and model performance.
+
+**7.**: Define a class for the ViT model. This is a sequence of patch embedding, positional embedding, and n_blocks Transformer Encoder blocks, followed by a classification head that consists of layer normalization, global average pooling, and a linear layer. The ViT model takes an image as input and outputs a vector of logits for each class.
+
+
 
 
 ## Run Locally

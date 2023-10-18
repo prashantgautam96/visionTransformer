@@ -9,7 +9,6 @@ Transformers for Image Recognition at Scale,” published at ICLR 20211. The ViT
 
 ![Logo](https://www.researchgate.net/publication/348947034/figure/fig2/AS:986572736446471@1612228678819/The-Vision-Transformer-architecture-a-the-main-architecture-of-the-model-b-the.png)
 
-
 ## Implementation
 
 - An image is split into fixed-size patches.

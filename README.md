@@ -10,6 +10,14 @@ Transformers for Image Recognition at Scale,” published at ICLR 20211. The ViT
 ![Logo](https://learnopencv.com/wp-content/uploads/2023/02/image-9.png)
 
 
+## Implementation
+
+- An image is split into fixed-size patches.
+- Each patch is linearly embedded.
+- Position embeddings are added to the resulting sequence of vectors.
+- The sequence of vectors is fed to a standard Transformer encoder.
+In order to perform classification, an extra learnable “classification token” is added to the sequence. The resulting sequence is then fed to a standard Transformer decoder.
+
 
 ## Run Locally
 
@@ -39,4 +47,3 @@ Train & Test the ViT Model
 ```bash
   Click on the play button of each module 
 ```
-

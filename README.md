@@ -7,7 +7,7 @@ Transformers for Image Recognition at Scale,” published at ICLR 20211. The ViT
 
 
 
-![Logo]([https://learnopencv.com/wp-content/uploads/2023/02/image-9.png](https://www.researchgate.net/publication/348947034/figure/fig2/AS:986572736446471@1612228678819/The-Vision-Transformer-architecture-a-the-main-architecture-of-the-model-b-the.png))
+![Logo](https://www.researchgate.net/publication/348947034/figure/fig2/AS:986572736446471@1612228678819/The-Vision-Transformer-architecture-a-the-main-architecture-of-the-model-b-the.png)
 
 
 ## Implementation

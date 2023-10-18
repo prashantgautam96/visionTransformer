@@ -47,3 +47,16 @@ Train & Test the ViT Model
 ```bash
   Click on the play button of each module 
 ```
+
+## Real World Implementations
+
+The ViT model has shown promising results in various computer vision tasks, such as image classification, object detection, and semantic image segmentation. Here are some potential future ideas for ViT transformation:
+
+1. **Video Classification**: ViT can be extended to video classification tasks by treating each frame of a video as an image and applying the ViT model to each frame.
+
+2. **Image Generation**: ViT can be used to generate images by training a generative model on the learned representations of the ViT model.
+
+3. **Transfer Learning**: ViT can be used as a pre-trained model for transfer learning on other computer vision tasks.
+
+4. **Multimodal Learning**: ViT can be combined with other models, such as language models, to perform multimodal learning tasks.
+    
